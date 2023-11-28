@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit - {{ article.title }}</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+            background-color: #f8f9fa;
+            color: #495057;
+        }
+
+        header {
+            background-color: #343a40;
+            padding: 10px;
+            color: #ffffff;
+            text-align: center;
+            font-size: 24px;
+        }
+
+        main {
+            max-width: 600px;
+            margin: auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #343a40;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            background-color: #fff;
+            color: #495057;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <a href="/articles">Home</a>
+    Edit - {{ article.title }}
+</header>
+<main>
+    <form method="post" action="/articles/{{ article.id }}/update">
+        <div>
+            <label for="title">Title</label>
+            <input id="title" type="text" name="title" value="{{ article.title }}">
+        </div>
+        <div>
+            <label for="description">Description</label>
+            <textarea id="description" name="description" rows="10" cols="10">{{ article.description }}</textarea>
+        </div>
+        <div>
+            <button type="submit">Update</button>
+        </div>
+    </form>
+</main>
+</body>
+</html>

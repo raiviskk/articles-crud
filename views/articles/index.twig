@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article List</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f8f9fa;
+        }
+
+        h3 {
+            color: #343a40;
+            margin-bottom: 5px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        p {
+            color: #495057;
+            margin-bottom: 10px;
+        }
+
+        small {
+            color: #6c757d;
+            display: block;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        li {
+            margin: 10px;
+            background-color: #ffffff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        img {
+            max-width: 100%;
+            max-height: 150px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+        }
+
+        .create-button {
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+<button class="create-button"><a href="/articles/create" style="text-decoration: none; color: #fff;">Create Article</a></button>
+
+<ul>
+    {% for article in articles.all %}
+        <li>
+            <img src="{{ article.picture }}" alt="{{ article.title }}">
+            <h3>
+                <a href="/articles/{{ article.id }}">{{ article.title }}</a>
+            </h3>
+            <p>
+                <small>{{ article.createdAt.format('Y-m-d H:i:s') }}</small>
+            </p>
+        </li>
+    {% endfor %}
+</ul>
+</body>
+</html>
